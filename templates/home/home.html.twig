@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<div class="row">
+			{% if ads != null %}
+				{% for item in ads %}
+					<div class="card col-3" style="padding: 0;">
+						<img class="card-img-top" src="https://www.nigiloc.com/images/image-not-found.png" alt="Card image">
+						<div class="card-body">
+							<h4 class="card-title">{{ item.title }}</h4>
+							<h4 class="card-title">{{ item.price }}
+								€</h4>
+							<p class="card-text">Catégorie :
+								{{ item.category.title }}</p>
+							<p class="card-text">Mise en ligne le :
+								{{ item.getCreatedAt()|date('d/m/Y H:m') }}</p>
+							<a href="{{ path('app_view_ad', {id: item.id}) }}" class="btn btn-primary" style="">Voir l'annonce</a>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<h1>Pas d'annonce en ligne :)
+				</h1>
+			{% endif %}
+
+		</div>
+	</div>
+{% endblock %}

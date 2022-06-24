@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Leboncoin |
+			{% block title %}{% endblock %}
+		</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="icon" href="https://apprecs.org/gp/images/app-icons/300/bf/fr.leboncoin.jpg">
+		<link
+		rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+				<a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+					<img style="width:100%" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Leboncoin_Logo_%282016%29.svg" alt="">
+				</a>
+
+				<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+					<li>
+						<a href="{% if is_granted('ROLE_USER') %}{{ path('add_ad') }}{% else %}{{ path('app_login') }}{% endif %}" style="background: #F56B2A;padding: 15px 30px;border-radius: 10px;color:white;font-weight:600;" class="nav-link">
+							<i class="fa-regular fa-square-plus"></i>
+							Déposer une annonce</a>
+					</li>
+				</ul>
+
+				<div class="col-md-3 text-end">
+					{% if is_granted('ROLE_USER') %}
+						<a href="{{ path('app_logout') }}" type="button" style="color:#F56B2A;border:1px solid #F56B2A" class="btn btn-outline-primary me-2">Vous êtes connecté en tant que
+							{{ app.user.username }}, ce déconnecter ?</a>
+					{% else %}
+						<a href="{{ path('app_login') }}" type="button" style="color:#F56B2A;border:1px solid #F56B2A" class="btn btn-outline-primary me-2">Se
+																																																																																		          connecter</a>
+						<a href="{{ path('app_register') }}" type="button" style="background-color:#F56B2A;border:1px solid #F56B2A" class="btn btn-primary">S'inscrire</a>
+					{% endif %}
+
+
+				</div>
+			</header>
+		</div>
+		{% block body %}{% endblock %}
+		<div class="container">
+			<footer class="py-3 my-4">
+				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+					
+				</ul>
+				<p class="text-center text-muted">© 2022 Leboncoin, Inc</p>
+			</footer>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	</body>
+
 </html>
