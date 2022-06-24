@@ -6,15 +6,17 @@
 {% block body %}
 	<div class="container">
 
-		<div class="row">
+		<div class="row g-5 ">
 			{% if ads != null %}
 				{% for item in ads %}
-					<div class="card col-3" style="padding: 0;">
+					<div class="card col-4" style="padding: 0;">
 						<img class="card-img-top" src="https://www.nigiloc.com/images/image-not-found.png" alt="Card image">
 						<div class="card-body">
 							<h4 class="card-title">{{ item.title }}</h4>
 							<h4 class="card-title">{{ item.price }}
 								€</h4>
+							<p class="card-text">
+								{{ item.description }}</p>
 							<p class="card-text">Catégorie :
 								{{ item.category.title }}</p>
 							<p class="card-text">Mise en ligne le :
