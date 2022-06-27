@@ -21,7 +21,7 @@
 								{{ item.category.title }}</p>
 							<p class="card-text">Mise en ligne le :
 								{{ item.getCreatedAt()|date('d/m/Y H:m') }}</p>
-							<a href="{{ path('app_view_ad', {id: item.id}) }}" class="btn btn-primary" style="">Voir l'annonce</a>
+							<a href="{{ path('app_view_ad', {id: item.id}) }}" class="btn" style="background: #F56B2A;color:white">Voir l'annonce</a>
 						</div>
 					</div>
 				{% endfor %}

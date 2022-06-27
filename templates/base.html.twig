@@ -29,7 +29,7 @@
 
 				<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 					<li>
-						<a href="{% if is_granted('ROLE_USER') %}{{ path('add_ad') }}{% else %}{{ path('app_login') }}{% endif %}" style="background: #F56B2A;padding: 15px 30px;border-radius: 10px;color:white;font-weight:600;" class="nav-link">
+						<a href="{{ path('add_ad') }}" style="background: #F56B2A;padding: 15px 30px;border-radius: 10px;color:white;font-weight:600;" class="nav-link">
 							<i class="fa-regular fa-square-plus"></i>
 							Déposer une annonce</a>
 					</li>
@@ -41,7 +41,7 @@
 							{{ app.user.username }}, ce déconnecter ?</a>
 					{% else %}
 						<a href="{{ path('app_login') }}" type="button" style="color:#F56B2A;border:1px solid #F56B2A" class="btn btn-outline-primary me-2">Se
-																																																																																		          connecter</a>
+																																																																																																          connecter</a>
 						<a href="{{ path('app_register') }}" type="button" style="background-color:#F56B2A;border:1px solid #F56B2A" class="btn btn-primary">S'inscrire</a>
 					{% endif %}
 
@@ -52,9 +52,7 @@
 		{% block body %}{% endblock %}
 		<div class="container">
 			<footer class="py-3 my-4">
-				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-					
-				</ul>
+				<ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
 				<p class="text-center text-muted">© 2022 Leboncoin, Inc</p>
 			</footer>
 		</div>
